@@ -1,3 +1,7 @@
+package Abilities;
+
+import Monsters.Monster;
+
 /**
  * @author Dominick Racela
  */

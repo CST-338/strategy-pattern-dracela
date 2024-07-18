@@ -1,18 +1,22 @@
+package Abilities;
+
+import Monsters.Monster;
+
 /**
  * @author Dominick Racela
  */
 
-public class RangedAttack implements Attack{
+public class MeleeAttack implements Attack {
 
     Monster attacker;
 
-    public RangedAttack(Monster attacker) {
+    public  MeleeAttack(Monster attacker) {
         this.attacker = attacker;
     }
 
     @Override
     public Integer attack(Monster target) {
-        String message = attacker + " uses a ranged attack on " + target;
+        String message = attacker + " uses a melee attack on " + target;
         System.out.println(message);
         return null;
     }

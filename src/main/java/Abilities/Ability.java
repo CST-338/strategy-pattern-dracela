@@ -1,3 +1,5 @@
+package Abilities;
+
 /**
  * @author Dominick Racela
  */
