@@ -1,6 +1,10 @@
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * @author Dominick Racela
+ */
+
 public abstract class Monster {
     private Integer hp;
     private Integer xp;

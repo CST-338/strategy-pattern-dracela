@@ -1,3 +1,7 @@
+/**
+ * @author Dominick Racela
+ */
+
 public class MeleeAttack implements Attack{
 
     Monster attacker;

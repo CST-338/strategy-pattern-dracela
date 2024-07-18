@@ -1,3 +1,7 @@
+/**
+ * @author Dominick Racela
+ */
+
 public class RangedAttack implements Attack{
 
     Monster attacker;
