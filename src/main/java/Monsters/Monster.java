@@ -8,112 +8,121 @@ import Abilities.Attack;
 
 /**
  * @author Dominick Racela
+ * Date: 30JUL2024
  */
 
 public abstract class Monster {
-    private Integer hp;
-    private Integer xp;
-    private Integer maxHP;
-    private HashMap<String, Integer> items;
-    Integer agility = 10;
-    Integer defense = 10;
-    Integer strength = 10;
-    Attack attack;
 
-    public Integer getHp() {
-        return hp;
-    }
+  private Integer hp;
+  private Integer xp;
+  private Integer maxHP;
+  private HashMap<String, Integer> items;
+  Integer agility = 10;
+  Integer defense = 10;
+  Integer strength = 10;
+  Attack attack;
 
-    public void setHp(Integer hp) {
-        this.hp = hp;
-    }
+  public Integer getHp() {
+    return hp;
+  }
 
-    public Integer getXp() {
-        return xp;
-    }
+  public void setHp(Integer hp) {
+    this.hp = hp;
+  }
 
-    public HashMap<String, Integer> getItems() {
-        return items;
-    }
+  public Integer getXp() {
+    return xp;
+  }
 
-    public void setItems(HashMap<String, Integer> items) {
-        this.items = items;
-    }
+  public HashMap<String, Integer> getItems() {
+    return items;
+  }
 
-    public Integer getMaxHP() {
-        return maxHP;
-    }
+  public void setItems(HashMap<String, Integer> items) {
+    this.items = items;
+  }
 
-    public Integer getAgility() {
-        return agility;
-    }
+  public Integer getMaxHP() {
+    return maxHP;
+  }
 
-    public Integer getDefense() {
-        return defense;
-    }
+  public Integer getAgility() {
+    return agility;
+  }
 
-    public Integer getStrength() {
-        return strength;
-    }
+  public Integer getDefense() {
+    return defense;
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Monster monster = (Monster) o;
-        return Objects.equals(getHp(), monster.getHp()) && Objects.equals(getXp(), monster.getXp()) && Objects.equals(getMaxHP(), monster.getMaxHP()) && Objects.equals(getItems(), monster.getItems());
-    }
+  public Integer getStrength() {
+    return strength;
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getHp(), getXp(), getMaxHP(), getItems());
-    }
+  @Override
+  public boolean equals(Object o) {
+      if (this == o) {
+          return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+          return false;
+      }
+    Monster monster = (Monster) o;
+    return Objects.equals(getHp(), monster.getHp()) && Objects.equals(getXp(), monster.getXp())
+        && Objects.equals(getMaxHP(), monster.getMaxHP()) && Objects.equals(getItems(),
+        monster.getItems());
+  }
 
-    public Monster(Integer maxHP, Integer xp, HashMap<String, Integer> items) {
-        this.maxHP = maxHP;
-        hp = this.maxHP;
-        this.xp = xp;
-        this.items = items;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(getHp(), getXp(), getMaxHP(), getItems());
+  }
 
-    Integer getAttribute(Integer min, Integer max) {
-        Random rand = new Random();
-        if (min > max) {
-            Integer temp = min;
-            min = max;
-            max = temp;
-        }
-        return rand.nextInt(max-min) + min;
-    }
+  public Monster(Integer maxHP, Integer xp, HashMap<String, Integer> items) {
+    this.maxHP = maxHP;
+    hp = this.maxHP;
+    this.xp = xp;
+    this.items = items;
+  }
 
-    boolean takeDamage(Integer damage) {
-        if (damage > 0) {
-            this.setHp(this.getHp() - damage);
-            System.out.println("The creature was hit for " + damage + " damage");
-        }
-        if (this.getHp() > 0) {
-            System.out.println(this.toString());
-            return true;
-        } else {
-            this.setHp(0);
-            System.out.println("Oh no! The creature has perished");
-            System.out.println(this.toString());
-            return false;
-        }
+  Integer getAttribute(Integer min, Integer max) {
+    Random rand = new Random();
+    if (min > max) {
+      Integer temp = min;
+      min = max;
+      max = temp;
     }
+    return rand.nextInt(max - min) + min;
+  }
 
-    /**
-     * TODO: attackTarget
-     * @param target
-     * @return
-     */
-    public Integer attackTarget(Monster target) {
-        target.takeDamage(attack.attack(target));
-        return attack.attack(target);
+  boolean takeDamage(Integer damage) {
+    if (damage > 0) {
+      this.setHp(this.getHp() - damage);
+      System.out.println("The creature was hit for " + damage + " damage");
     }
+    if (this.getHp() > 0) {
+      System.out.println(this.toString());
+      return true;
+    } else {
+      this.setHp(0);
+      System.out.println("Oh no! The creature has perished");
+      System.out.println(this.toString());
+      return false;
+    }
+  }
 
-    @Override
-    public String toString() {
-        return "hp=" + hp + "/" + maxHP;
-    }
+  /**
+   * TODO: attackTarget
+   *
+   * @param target
+   * @return
+   */
+  public Integer attackTarget(Monster target) {
+    target.takeDamage(attack.attack(target));
+    return attack.attack(target);
+  }
+
+  @Override
+  public String toString() {
+    return "hp=" + hp + "/" + maxHP;
+  }
 }

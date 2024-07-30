@@ -6,23 +6,25 @@ import Abilities.MeleeAttack;
 
 /**
  * @author Dominick Racela
+ * Date: 30JUL2024
  */
 
 public class Kobold extends Monster {
-    public Kobold(Integer maxHP, Integer xp, HashMap<String, Integer> items) {
-        super(maxHP, xp, items);
-        Integer maxStr = 15;
-        Integer maxDef = 6;
-        Integer maxAgi = 3;
 
-        attack = new MeleeAttack(this);
-        strength = super.getAttribute(strength, maxStr);
-        defense = super.getAttribute(defense, maxDef);
-        agility = super.getAttribute(agility, maxAgi);
-    }
+  public Kobold(Integer maxHP, Integer xp, HashMap<String, Integer> items) {
+    super(maxHP, xp, items);
+    Integer maxStr = 15;
+    Integer maxDef = 6;
+    Integer maxAgi = 3;
 
-    @Override
-    public String toString() {
-        return "Monsters.Kobold has : " + super.toString();
-    }
+    attack = new MeleeAttack(this);
+    strength = super.getAttribute(strength, maxStr);
+    defense = super.getAttribute(defense, maxDef);
+    agility = super.getAttribute(agility, maxAgi);
+  }
+
+  @Override
+  public String toString() {
+    return "Monsters.Kobold has : " + super.toString();
+  }
 }

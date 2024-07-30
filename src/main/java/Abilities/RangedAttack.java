@@ -4,20 +4,21 @@ import Monsters.Monster;
 
 /**
  * @author Dominick Racela
+ * Date: 30JUL2024
  */
 
 public class RangedAttack implements Attack {
 
-    Monster attacker;
+  Monster attacker;
 
-    public RangedAttack(Monster attacker) {
-        this.attacker = attacker;
-    }
+  public RangedAttack(Monster attacker) {
+    this.attacker = attacker;
+  }
 
-    @Override
-    public Integer attack(Monster target) {
-        String message = attacker + " uses a ranged attack on " + target;
-        System.out.println(message);
-        return attacker.getAgility() - target.getAgility();
-    }
+  @Override
+  public Integer attack(Monster target) {
+    String message = attacker + " uses a ranged attack on " + target;
+    System.out.println(message);
+    return attacker.getAgility() - target.getAgility();
+  }
 }
