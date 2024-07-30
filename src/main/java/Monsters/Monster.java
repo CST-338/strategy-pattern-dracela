@@ -95,7 +95,9 @@ public abstract class Monster {
             System.out.println(this.toString());
             return true;
         } else {
+            this.setHp(0);
             System.out.println("Oh no! The creature has perished");
+            System.out.println(this.toString());
             return false;
         }
     }
