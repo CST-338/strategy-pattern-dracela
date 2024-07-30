@@ -2,6 +2,9 @@ package Monsters;
 
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.Random;
+
+import Abilities.Attack;
 
 /**
  * @author Dominick Racela
@@ -12,6 +15,10 @@ public abstract class Monster {
     private Integer xp;
     private Integer maxHP;
     private HashMap<String, Integer> items;
+    Integer agility = 10;
+    Integer defense = 10;
+    Integer strength = 10;
+    Attack attack;
 
     public Integer getHp() {
         return hp;
@@ -37,6 +44,18 @@ public abstract class Monster {
         return maxHP;
     }
 
+    public Integer getAgility() {
+        return agility;
+    }
+
+    public Integer getDefense() {
+        return defense;
+    }
+
+    public Integer getStrength() {
+        return strength;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,6 +74,39 @@ public abstract class Monster {
         hp = this.maxHP;
         this.xp = xp;
         this.items = items;
+    }
+
+    Integer getAttribute(Integer min, Integer max) {
+        Random rand = new Random();
+        if (min > max) {
+            Integer temp = min;
+            min = max;
+            max = temp;
+        }
+        return rand.nextInt(max-min) + min;
+    }
+
+    boolean takeDamage(Integer damage) {
+        if (damage > 0) {
+            this.setHp(this.getHp() - damage);
+            System.out.println("The creature was hit for " + damage + " damage");
+        }
+        if (this.getHp() > 0) {
+            System.out.println(this.toString());
+            return true;
+        } else {
+            System.out.println("Oh no! The creature has perished");
+            return false;
+        }
+    }
+
+    /**
+     * TODO: attackTarget
+     * @param target
+     * @return
+     */
+    public Integer attackTarget(Monster target) {
+        target.takeDamage(attack(target));
     }
 
     @Override
