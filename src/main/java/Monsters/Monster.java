@@ -106,7 +106,8 @@ public abstract class Monster {
      * @return
      */
     public Integer attackTarget(Monster target) {
-        target.takeDamage(attack(target));
+        target.takeDamage(attack.attack(target));
+        return attack.attack(target);
     }
 
     @Override

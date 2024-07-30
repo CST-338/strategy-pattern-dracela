@@ -18,6 +18,6 @@ public class MeleeAttack implements Attack {
     public Integer attack(Monster target) {
         String message = attacker + " uses a melee attack on " + target;
         System.out.println(message);
-        return attacker.getStr() - target.getDef();
+        return attacker.getStrength() - target.getDefense();
     }
 }
