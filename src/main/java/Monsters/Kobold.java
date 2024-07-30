@@ -2,6 +2,8 @@ package Monsters;
 
 import java.util.HashMap;
 
+import Abilities.MeleeAttack;
+
 /**
  * @author Dominick Racela
  */
@@ -9,6 +11,11 @@ import java.util.HashMap;
 public class Kobold extends Monster {
     public Kobold(Integer maxHP, Integer xp, HashMap<String, Integer> items) {
         super(maxHP, xp, items);
+
+        attack = new MeleeAttack(this);
+        str = super.getAttribute(str, maxStr);
+        def = super.getAttribute(def, maxDef);
+        agi = super.getAttribute(agi, maxAgi);
     }
 
     @Override
